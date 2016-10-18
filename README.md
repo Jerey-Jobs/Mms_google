@@ -1,0 +1,2 @@
+# Mms_google
+该项目为google官方Mms代码，我在源码基础上加了很多注释，帮助大家更好的了解Mms，以及google代码风格
