@@ -89,6 +89,8 @@ import java.util.HashSet;
 
 /**
  * This activity provides a list view of existing conversations.
+ * 这是对话列表的显示窗口Activity，它是一个ListActivity，
+ * 用于显示，编辑和管理所有的对话
  */
 public class ConversationList extends ListActivity implements DraftCache.OnDraftChangedListener {
     private static final String TAG = LogTag.TAG;
@@ -130,6 +132,10 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     private boolean mIsSmsEnabled;
     private Toast mComposeDisabledToast;
 
+    /**
+     * onCreate中做一些UI初始化工作
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +144,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         mSmsPromoBannerView = findViewById(R.id.banner_sms_promo);
 
-        mQueryHandler = new ThreadListQueryHandler(getContentResolver());
+        mQueryHandler = new ThreadLisAdaptertQueryHandler(getContentResolver());
 
         ListView listView = getListView();
         listView.setOnCreateContextMenuListener(mConvListOnCreateContextMenuListener);
@@ -384,6 +390,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         mDoOnceAfterFirstQuery = true;
 
+        /**
+         * 开始异步查询数据
+         */
         startAsyncQuery();
 
         // We used to refresh the DraftCache here, but
@@ -404,6 +413,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         }
     }
 
+    /**
+     * onstop中，记得关闭cursor 停止查询，
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -562,6 +574,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
+            /**
+             * 点击了新建短信
+             */
             case R.id.action_compose_new:
                 if (mIsSmsEnabled) {
                     createNewMessage();
@@ -574,10 +589,16 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
                     mComposeDisabledToast.show();
                 }
                 break;
+            /**
+             * 删除所有短信
+             */
             case R.id.action_delete_all:
                 // The invalid threadId of -1 means all threads here.
                 confirmDeleteThread(-1L, mQueryHandler);
                 break;
+            /**
+             * 跳转到设置界面
+             */
             case R.id.action_settings:
                 Intent intent = new Intent(this, MessagingPreferenceActivity.class);
                 startActivityIfNeeded(intent, -1);
@@ -585,6 +606,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
             case R.id.action_debug_dump:
                 LogTag.dumpInternalTables(this);
                 break;
+            /**
+             * 小区广播
+             */
             case R.id.action_cell_broadcasts:
                 Intent cellBroadcastIntent = new Intent(Intent.ACTION_MAIN);
                 cellBroadcastIntent.setComponent(new ComponentName(
@@ -886,6 +910,9 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
         }
     };
 
+    /**
+     * 查询的Handler
+     */
     private final class ThreadListQueryHandler extends ConversationQueryHandler {
         public ThreadListQueryHandler(ContentResolver contentResolver) {
             super(contentResolver);
@@ -905,10 +932,19 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 //
 //        protected void myonQueryComplete(int token, Object cookie, Cursor cursor) {
 
+        /**
+         * 当查询完成，会回掉这个函数，去刷新界面
+         * @param token
+         * @param cookie
+         * @param cursor
+         */
         @Override
         protected void onQueryComplete(int token, Object cookie, Cursor cursor) {
             switch (token) {
             case THREAD_LIST_QUERY_TOKEN:
+                /**
+                 * cursorA新界面
+                 */
                 mListAdapter.changeCursor(cursor);
 
                 if (mListAdapter.getCount() == 0) {
