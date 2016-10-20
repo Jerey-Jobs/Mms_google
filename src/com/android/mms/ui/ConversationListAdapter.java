@@ -32,6 +32,17 @@ import com.android.mms.data.Conversation;
 
 /**
  * The back-end data adapter for ConversationList.
+ * CursorAdapter + ContentProvide构成界面自动更新
+ *
+ * CursorAdapter 需要复写两个方法
+ * 一个bindview
+ * 一个newView
+ * 从源码的 getView( int position, View convertView, ViewGroup parent)方法中我们可以看出：
+
+ (1)newView：并不是每次都被调用的，它只在实例化的时候调用,数据增加的时候也会调用,
+    但是在重绘(比如修改条目里的TextView的内容)的时候不会被调用
+
+ (2)bindView：从代码中可以看出在绘制Item之前一定会调用bindView方法它在重绘的时候也同样被调用
  */
 //TODO: This should be public class ConversationListAdapter extends ArrayAdapter<Conversation>
 public class ConversationListAdapter extends CursorAdapter implements AbsListView.RecyclerListener {

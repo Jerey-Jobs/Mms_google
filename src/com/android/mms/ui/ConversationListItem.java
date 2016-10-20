@@ -42,6 +42,8 @@ import com.android.mms.data.Conversation;
 
 /**
  * This class manages the view for given conversation.
+ * 自定义view ConversationListItem
+ * 该item具有 从messaging中加载信息转为item
  */
 public class ConversationListItem extends RelativeLayout implements Contact.UpdateListener,
             Checkable {
