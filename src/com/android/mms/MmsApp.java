@@ -46,6 +46,7 @@ import com.android.mms.util.ThumbnailManager;
 
 import java.util.Locale;
 
+
 public class MmsApp extends Application {
     public static final String LOG_TAG = LogTag.TAG;
 

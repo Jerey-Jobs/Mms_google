@@ -41,6 +41,8 @@ import com.google.android.mms.pdu.PduHeaders;
 
 /**
  * An interface for finding information about conversations and/or creating new ones.
+ * 用来管理对话Threads，通常用来管理当前的对话，
+ * 也就是进入的对话和正在进行操作的对话，它也用来管理对话列表，比如查询对话列表
  */
 public class Conversation {
     private static final String TAG = LogTag.TAG;
@@ -138,6 +140,7 @@ public class Conversation {
 
     /**
      * Find the conversation matching the provided thread ID.
+     * 获取Conversation 若是新联系人 thread为0  新建一个conversation返回
      */
     public static Conversation get(Context context, long threadId, boolean allowQuery) {
         if (DEBUG) {

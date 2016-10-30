@@ -78,6 +78,8 @@ import com.google.android.mms.pdu.SendReq;
 
 /**
  * Contains all state related to a message being edited by the user.
+ * 用来管理当前正在编辑的消息，它从创建，草稿到发送完成后一直存在，
+ * 只要打开了编辑信息的页面就会创建一个WorkingMessage，直到退出编辑页面。
  */
 public class WorkingMessage {
     private static final String TAG = LogTag.TAG;
