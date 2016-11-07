@@ -32,12 +32,13 @@ Recipient接受人，这里是指信息的接收者，要么是一个陌生的�
 
   ![Mms模块构成图][1]
 ###  UI主要组成
-![编辑界面类图][2]
+![会话列表数据刷新][2]
+![编辑界面类图][3]
    
 ### 短信发送、接收 
-![短信发送流程图][3]
-![短信发送类图][4]
-![短信接收流程图][5]
+![短信发送流程图][4]
+![短信发送类图][5]
+![短信接收流程图][6]
 
 ### 彩信 
 MMS为Multimedia Messaging Service的缩写，中文译为多媒体短信服务，通过网络来传输数据
@@ -52,8 +53,8 @@ PduPersister  	用于管理PDU存储
 PduParser	 	用于解析PDU
 PduComposer	用于生成PDU
 
-![彩信发送流程图][6]
-![彩信接收流程图][7]
+![彩信发送流程图][7]
+![彩信接收流程图][8]
 
 
 **彩信不自动下载的情况**
@@ -93,11 +94,11 @@ PduComposer	用于生成PDU
 > MmsSmsProvider则用于短彩信通用数据的存取，如会话信息、接收者、草稿（公共属性）等
 
 
-
   [1]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90.png
-  [2]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2%E7%B1%BB%E5%9B%BE.png
-  [3]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B.png
-  [4]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81%E6%8E%A5%E5%8F%97%E7%B1%BB%E5%9B%BE.png
-  [5]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B.png
-  [6]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E5%BD%A9%E4%BF%A1%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8Bgoogle.png
-  [7]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E5%BD%A9%E4%BF%A1%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B.png
+  [2]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E4%BC%9A%E8%AF%9D%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0.png
+  [3]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%BC%96%E8%BE%91%E7%95%8C%E9%9D%A2%E7%B1%BB%E5%9B%BE.png
+  [4]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8B.png
+  [5]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E5%8F%91%E9%80%81%E6%8E%A5%E5%8F%97%E7%B1%BB%E5%9B%BE.png
+  [6]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E7%9F%AD%E4%BF%A1%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B.png
+  [7]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E5%BD%A9%E4%BF%A1%E5%8F%91%E9%80%81%E6%B5%81%E7%A8%8Bgoogle.png
+  [8]: https://github.com/Jerey-Jobs/Mms_google/blob/master/HelpPictures/%E5%BD%A9%E4%BF%A1%E6%8E%A5%E6%94%B6%E6%B5%81%E7%A8%8B.png
